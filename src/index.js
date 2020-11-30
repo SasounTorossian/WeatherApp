@@ -3,6 +3,7 @@ form.addEventListener("submit", (e) => {
     e.preventDefault()
     let location = document.querySelector("#location-input")
     console.log(location.value)
+    form.reset()
 })
 
 let weatherTempKelvin
@@ -31,18 +32,16 @@ const updateWeatherHumidity = (hum) => {
     humidity.innerText = hum + "%"
 }
 
-// Conversion between F and C button.
+// Button handler for temperature unit toggle.
 $(function() {
     $('#temp-toggle').change(function() {
         let state = $(this).prop('checked')
-        if(state) {
-            const celsius = kelvinToCelsius(weatherTempKelvin)
-            updateWeatherTemp(celsius)
-        }
-        else {
-            const fahrenheit = kelvinToFahrenheit(weatherTempKelvin)
-            updateWeatherTemp(fahrenheit)
-        }
+        let temp
+
+        if(state) temp = kelvinToCelsius(weatherTempKelvin)
+        else temp = kelvinToFahrenheit(weatherTempKelvin)
+
+        updateWeatherTemp(temp)
     })
 })
 
