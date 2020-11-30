@@ -59,8 +59,9 @@
                 
                 <div class="card mx-3 text-center" style="width: 15rem">
                     <div class="card-body">
-                        <h1 class="card-title">23°C</h1>
-                        <input 
+                        <h1 class="card-title" id="weather-temperature"></h1>
+                        <input
+                            id="temp-toggle" 
                             type="checkbox" 
                             checked data-toggle="toggle" 
                             data-onstyle="primary"
@@ -74,15 +75,15 @@
 
                 <div class="card mx-3 text-center" style="width: 15rem">
                     <div class="card-body">
-                        <h1 class="card-title">Cloudy</h1>
-                        <img class="image" src="" alt="">
+                        <h1 class="card-title" id="weather-text"></h1>
+                        <img class="image" id="weather-image" src="" alt="">
                     </div>
                 </div>
 
                 <div class="card mx-3 text-center" style="width: 15rem">
                     <div class="card-body">
                       <h1 class="card-title">Humidity</h1>
-                      <h2 class="col-sm" id="humidity">15%</h2>
+                      <h2 class="col-sm" id="weather-humidity"></h2>
                     </div>
                 </div>
             </div>
