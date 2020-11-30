@@ -9,7 +9,8 @@
 </head>
 <body>
     <div class="container">
-            <div class="row">
+            <!-- Title Card -->
+            <div class="row my-row">
                 <div class="col text-center">
                     <h1 class="display-2">Weather App</h1>
                 </div>
@@ -17,13 +18,14 @@
 
             <br>
             
-            <div class="row justify-content-center">
+            <!-- Input and submit -->
+            <div class="row my-row justify-content-center">
                 <div class="col-md-8">
                     <form>
                         <div class="form-row align-items-center">
                           <div class="col-auto flex-fill">
-                            <label class="sr-only" for="inlineFormInput">Location</label>
-                            <input type="text" class="form-control mb-2" id="inlineFormInput">
+                            <label class="sr-only" for="location-input">Location</label>
+                            <input type="text" class="form-control mb-2" id="location-input">
                           </div>
                           <div class="col-auto">
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
@@ -35,31 +37,11 @@
 
             <br>
 
-            <div class="row">
-                <div class="col text-center">
-                    
-                </div>
-                <div class="col text-center">
-                    
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col text-center">
-                    <div class="col-sm" id="humidity-label"></div>
-
-                </div>
-                <div class="col text-center">
-                    
-
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
-                
-                <div class="card mx-3 text-center" style="width: 15rem">
+            <!-- Cards -->
+            <div class="row my-row justify-content-center">
+                <div class="card mx-3 text-center" style="width: 12rem">
                     <div class="card-body">
-                        <h1 class="card-title" id="weather-temperature"></h1>
+                        <h2 class="card-title mb-5 mt-2" id="weather-temperature"></h2>
                         <input
                             id="temp-toggle" 
                             type="checkbox" 
@@ -73,16 +55,16 @@
                     </div>
                 </div>
 
-                <div class="card mx-3 text-center" style="width: 15rem">
+                <div class="card mx-3 text-center" style="width: 18rem">
                     <div class="card-body">
-                        <h1 class="card-title" id="weather-text"></h1>
+                        <h2 class="card-title mt-2" id="weather-text"></h2>
                         <img class="image" id="weather-image" src="" alt="">
                     </div>
                 </div>
 
-                <div class="card mx-3 text-center" style="width: 15rem">
+                <div class="card mx-3 text-center" style="width: 12rem">
                     <div class="card-body">
-                      <h1 class="card-title">Humidity</h1>
+                      <h2 class="card-title mb-5 mt-2">Humidity</h2>
                       <h2 class="col-sm" id="weather-humidity"></h2>
                     </div>
                 </div>

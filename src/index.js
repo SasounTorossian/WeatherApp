@@ -1,10 +1,15 @@
-
+const form = document.querySelector("form")
+form.addEventListener("submit", (e) => {
+    e.preventDefault()
+    let location = document.querySelector("#location-input")
+    console.log(location.value)
+})
 
 let weatherTempKelvin
 
-const kelvinToCelsius  = (k) => (k - 273.15).toFixed(2) + "°C"
+const kelvinToCelsius  = (k) => (k - 273.15).toFixed(1) + "°C"
 
-const kelvinToFahrenheit = (k) => (k * 9/5 - 459.67).toFixed(2) + "°F"
+const kelvinToFahrenheit = (k) => (k * 9/5 - 459.67).toFixed(1) + "°F"
 
 const updateWeatherTemp = (temp) => {
     let temperature = document.querySelector("#weather-temperature")
@@ -26,35 +31,28 @@ const updateWeatherHumidity = (hum) => {
     humidity.innerText = hum + "%"
 }
 
-
-
-
 // Conversion between F and C button.
 $(function() {
     $('#temp-toggle').change(function() {
         let state = $(this).prop('checked')
         if(state) {
-            //C
-            // Check if already C or F
-            // get temp from somewhere, call a func to convert to F, and set display
             const celsius = kelvinToCelsius(weatherTempKelvin)
             updateWeatherTemp(celsius)
         }
         else {
-            //F
-            // Ditto, but opposite
             const fahrenheit = kelvinToFahrenheit(weatherTempKelvin)
             updateWeatherTemp(fahrenheit)
         }
     })
 })
 
+// get rid of iife. call when needed, hide when not in use or error
 const getWeather = (async () => {
     const response = await fetch('http://api.openweathermap.org/data/2.5/weather?q=London&appid=4afc0e7848e13a7ccc62b3be90d8b38f')
     const responseJson = await response.json()
 
     weatherTempKelvin = responseJson.main.temp
-    const weatherTempCelsius = (weatherTempKelvin - 273.15).toFixed(2)
+    const weatherTempCelsius = (weatherTempKelvin - 273.15).toFixed(1)
     const weatherHumid = responseJson.main.humidity
     const weatherDesc = responseJson.weather[0].description
     const weathericon = responseJson.weather[0].icon
@@ -69,4 +67,5 @@ const getWeather = (async () => {
     console.log(weatherTempCelsius)
     console.log(weatherHumid)
     console.log(weatherDesc)
+    console.log(responseJson)
 })()
