@@ -37,9 +37,20 @@
 
             <br>
 
-            <!-- Cards -->
+            <!-- Info Card -->
             <div class="row my-row justify-content-center">
-                <div class="card mx-3 text-center" style="width: 12rem">
+                <div class="card info-card col-md-8 my-2">
+                    <div class="card-body text-center">
+                      <h1 class="info-card-text"></h1>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <!-- Weather Cards -->
+            <div class="row my-row justify-content-center">
+                <div class="card weather-card mx-3 text-center" style="width: 12rem">
                     <div class="card-body">
                         <h2 class="card-title mb-5 mt-2" id="weather-temperature"></h2>
                         <input
@@ -55,14 +66,14 @@
                     </div>
                 </div>
 
-                <div class="card mx-3 text-center" style="width: 18rem">
+                <div class="card weather-card mx-3 text-center" style="width: 18rem">
                     <div class="card-body">
                         <h2 class="card-title mt-2" id="weather-text"></h2>
                         <img class="image" id="weather-image" src="" alt="">
                     </div>
                 </div>
 
-                <div class="card mx-3 text-center" style="width: 12rem">
+                <div class="card weather-card mx-3 text-center" style="width: 12rem">
                     <div class="card-body">
                       <h2 class="card-title mb-5 mt-2">Humidity</h2>
                       <h2 class="col-sm" id="weather-humidity"></h2>

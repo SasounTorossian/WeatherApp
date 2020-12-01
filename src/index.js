@@ -1,8 +1,25 @@
+const appID = "4afc0e7848e13a7ccc62b3be90d8b38f"
+
+const infoCardVisibility = (visibility, error) => {
+    const infoCard = document.querySelector(".info-card")
+    infoCard.style.visibility = visibility ? "visible" : "hidden"
+}
+
+const weatherCardVisibility = (visibility) => {
+    const cards = document.querySelectorAll(".weather-card")
+    cards.forEach(card => {
+        card.style.visibility = visibility ? "visible" : "hidden"
+    })
+}
+
+infoCardVisibility(false)
+weatherCardVisibility(false)
+
 const form = document.querySelector("form")
 form.addEventListener("submit", (e) => {
+    const location = document.querySelector("#location-input")
     e.preventDefault()
-    let location = document.querySelector("#location-input")
-    console.log(location.value)
+    getWeather(location.value).catch(err => console.error(err));
     form.reset()
 })
 
@@ -32,6 +49,11 @@ const updateWeatherHumidity = (hum) => {
     humidity.innerText = hum + "%"
 }
 
+const updateInfoCard = (info) => {
+    const infoCardText = document.querySelector(".info-card-text")
+    infoCardText.innerText = info
+}
+
 // Button handler for temperature unit toggle.
 $(function() {
     $('#temp-toggle').change(function() {
@@ -45,26 +67,39 @@ $(function() {
     })
 })
 
-// get rid of iife. call when needed, hide when not in use or error
-const getWeather = (async () => {
-    const response = await fetch('http://api.openweathermap.org/data/2.5/weather?q=London&appid=4afc0e7848e13a7ccc62b3be90d8b38f')
-    const responseJson = await response.json()
+// handle in main function?
+async function getWeather(location)  {
 
-    weatherTempKelvin = responseJson.main.temp
-    const weatherTempCelsius = (weatherTempKelvin - 273.15).toFixed(1)
-    const weatherHumid = responseJson.main.humidity
-    const weatherDesc = responseJson.weather[0].description
-    const weathericon = responseJson.weather[0].icon
-    const iconPng = await fetch("http://openweathermap.org/img/wn/" + weathericon + "@2x.png")
-    const iconPngUrl = iconPng.url
+        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${appID}`)
+        
+        if(response.status == 200) {
+            const responseJson = await response.json()
+            weatherTempKelvin = responseJson.main.temp
+            const weatherDesc = responseJson.weather[0].description
+            const weathericon = responseJson.weather[0].icon
+            const weatherHumid = responseJson.main.humidity
+            const iconPng = await fetch("http://openweathermap.org/img/wn/" + weathericon + "@2x.png")
+            const iconPngUrl = iconPng.url
 
-    updateWeatherText(weatherDesc)
-    updateWeatherImage(iconPngUrl)
-    updateWeatherHumidity(weatherHumid)
-    updateWeatherTemp(kelvinToCelsius(weatherTempKelvin))
-
-    console.log(weatherTempCelsius)
-    console.log(weatherHumid)
-    console.log(weatherDesc)
-    console.log(responseJson)
-})()
+            infoCardVisibility(true)
+            weatherCardVisibility(true)
+            
+            updateInfoCard(location)
+        
+            updateWeatherText(weatherDesc)
+            updateWeatherImage(iconPngUrl)
+            updateWeatherHumidity(weatherHumid)
+        
+            updateWeatherTemp(kelvinToCelsius(weatherTempKelvin))
+        }
+        else if (response.status == 400) {
+            infoCardVisibility(true)
+            weatherCardVisibility(false)
+            updateInfoCard("Please enter city")
+        }
+        else {
+            infoCardVisibility(true)
+            weatherCardVisibility(false)
+            updateInfoCard("error")
+        }
+}
