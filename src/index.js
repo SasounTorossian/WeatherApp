@@ -3,6 +3,7 @@ const appID = "4afc0e7848e13a7ccc62b3be90d8b38f"
 const form = document.querySelector("form")
 form.addEventListener("submit", (e) => {
     e.preventDefault()
+    e.stopPropagation()
     const location = document.querySelector("#location-input")
     main(location.value)
     form.reset()
@@ -23,6 +24,11 @@ const weatherCardVisibility = (visibility) => {
 infoCardVisibility(false)
 weatherCardVisibility(false)
 
+const updateInfoCard = (info) => {
+    const infoCardText = document.querySelector(".info-card-text")
+    infoCardText.innerText = info
+}
+ 
 let weatherTempKelvin
 
 const kelvinToCelsius  = (k) => (k - 273.15).toFixed(1) + "°C"
@@ -49,9 +55,11 @@ const updateWeatherHumidity = (hum) => {
     humidity.innerText = hum + "%"
 }
 
-const updateInfoCard = (info) => {
-    const infoCardText = document.querySelector(".info-card-text")
-    infoCardText.innerText = info
+const toggleError = (err) => {
+    const location = document.querySelector("#location-input")
+    
+    if(err) location.classList.add("is-invalid")
+    else location.classList.remove("is-invalid")
 }
 
 // Button handler for temperature unit toggle.
@@ -102,6 +110,7 @@ const updateDOM = async (weatherData) => {
 const main = async (location) => {
     try
     {
+        toggleError(false)
         let weatherJson = await getWeatherJSON(location)
         let weatherData = await getWeatherData(weatherJson)
         weatherData = {...weatherData, location}
@@ -110,8 +119,6 @@ const main = async (location) => {
     catch(err) 
     {
         console.log(err)
-        infoCardVisibility(true)
-        weatherCardVisibility(false)
-        updateInfoCard("error")
+        toggleError(true)
     }
 }
