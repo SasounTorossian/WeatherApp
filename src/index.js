@@ -1,3 +1,5 @@
+import css from "./styles/style.css";
+
 const appID = "4afc0e7848e13a7ccc62b3be90d8b38f"
 
 const form = document.querySelector("form")
@@ -122,3 +124,5 @@ const main = async (location) => {
         toggleError(true)
     }
 }
+
+main("London")

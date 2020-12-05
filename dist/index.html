@@ -8,9 +8,9 @@
     <title>Weather App</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container my-container">
             <!-- Title Card -->
-            <div class="row my-row">
+            <div class="row my-row mb-5">
                 <div class="col text-center">
                     <h1 class="display-2">Weather App</h1>
                 </div>
@@ -18,69 +18,74 @@
 
             <br>
             
-            <!-- Input and submit -->
-            <div class="row my-row justify-content-center">
-                <div class="col-md-8">
-                    <form>
-                        <div class="form-row">
-                          <div class="col-auto flex-fill">
-                            <label class="sr-only" for="location-input">Location</label>
-                            <input type="text" class="form-control mb-2" id="location-input">
-                            <div class="invalid-feedback">Please input valid city.</div>
-                          </div>
-                          <div class="col-auto">
-                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                          </div>
+            <div class="inner-container mt-5">
+                <!-- Input and submit -->
+                <div class="row my-row justify-content-center">
+                    <div class="col-md-8 px-0">
+                        <form>
+                            <div class="form-row">
+                            <div class="col-auto flex-fill">
+                                <label class="sr-only" for="location-input">Location</label>
+                                <input type="text" class="form-control mb-2" id="location-input">
+                                <div class="invalid-feedback">Please input valid city.</div>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <br>
+
+                <!-- Info Card -->
+                <div class="row my-row justify-content-center">
+                    <div class="card info-card col-md-8 my-2">
+                        <div class="card-body text-center">
+                        <h1 class="info-card-text"></h1>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
 
-            <br>
+                <br>
 
-            <!-- Info Card -->
-            <div class="row my-row justify-content-center">
-                <div class="card info-card col-md-8 my-2">
-                    <div class="card-body text-center">
-                      <h1 class="info-card-text"></h1>
+                <!-- Weather Cards -->
+                <div class="row my-row justify-content-center">
+                    <div class="d-flex justify-content-between col-md-8 px-0">
+                        <div class="card weather-card text-center" style="width: 14rem">
+                            <div class="card-body">
+                                <h2 class="card-title mb-5 mt-2" id="weather-temperature"></h2>
+                                <input
+                                    id="temp-toggle" 
+                                    type="checkbox" 
+                                    checked data-toggle="toggle" 
+                                    data-onstyle="primary"
+                                    data-offstyle="danger"
+                                    data-on="°C"
+                                    data-off="°F"
+                                    data-size="lg"
+                                    data-width="80%">
+                            </div>
+                        </div>
+
+                        <div class="card weather-card text-center" style="width: 14rem">
+                            <div class="card-body">
+                                <h2 class="card-title mt-2" id="weather-text"></h2>
+                                <img class="image" id="weather-image" src="" alt="">
+                            </div>
+                        </div>
+
+                        <div class="card weather-card text-center" style="width: 14rem">
+                            <div class="card-body">
+                            <h2 class="card-title mb-5 mt-2">Humidity</h2>
+                            <h2 class="col-sm" id="weather-humidity"></h2>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <br>
-
-            <!-- Weather Cards -->
-            <div class="row my-row justify-content-center">
-                <div class="card weather-card mx-3 text-center" style="width: 12rem">
-                    <div class="card-body">
-                        <h2 class="card-title mb-5 mt-2" id="weather-temperature"></h2>
-                        <input
-                            id="temp-toggle" 
-                            type="checkbox" 
-                            checked data-toggle="toggle" 
-                            data-onstyle="primary"
-                            data-offstyle="danger"
-                            data-on="°C"
-                            data-off="°F"
-                            data-size="lg"
-                            data-width="80%">
-                    </div>
-                </div>
-
-                <div class="card weather-card mx-3 text-center" style="width: 18rem">
-                    <div class="card-body">
-                        <h2 class="card-title mt-2" id="weather-text"></h2>
-                        <img class="image" id="weather-image" src="" alt="">
-                    </div>
-                </div>
-
-                <div class="card weather-card mx-3 text-center" style="width: 12rem">
-                    <div class="card-body">
-                      <h2 class="card-title mb-5 mt-2">Humidity</h2>
-                      <h2 class="col-sm" id="weather-humidity"></h2>
-                    </div>
-                </div>
-            </div>
+            
     </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
