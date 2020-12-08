@@ -2,7 +2,7 @@
 
 Weathaer app based off Odin project. Takes a city as input and makes a call to openweathermap, which provides the temperature, weather, and humidity. Used as an opportunity to learn Bootstrap basics as well.
 
-[Weather gif demo](Weather.gif)
+![Weather gif demo](Weather.gif)
 
 Project was initially structured using Bootstrap and only later was javascript functionality added. Bootstrap provides a very quick and simple way of designing a website, but can also be quite limiting to a beginner who does not know where Bootstrap ends and custom .css begins. Overall created a simple interface that gets the job done.
 
