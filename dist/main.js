@@ -16,7 +16,7 @@
   \*******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"config\": () => /* binding */ config\n/* harmony export */ });\nlet config = {\r\n    API_KEY : \"4afc0e7848e13a7ccc62b3be90d8b38f\"\r\n}\r\n\r\n\n\n//# sourceURL=webpack://y/./config.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"config\": () => /* binding */ config\n/* harmony export */ });\nlet config = {\r\n    API_KEY : \"2d0e523632b381733e4f7e82846080ca\"\r\n}\r\n\r\n\n\n//# sourceURL=webpack://y/./config.js?");
 
 /***/ }),
 
