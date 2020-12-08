@@ -1,7 +1,7 @@
 import "./styles/style.scss";
-
+import { config } from "../config";
 // API key provided by openweathermap
-const appID = "4afc0e7848e13a7ccc62b3be90d8b38f"
+const appID = config.API_KEY
 
 // Handles submit event on form by stopping defauly behaviour, and calling main with input variable as a parameter.
 const form = document.querySelector("form")
